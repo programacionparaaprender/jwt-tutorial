@@ -1,0 +1,26 @@
+type User {
+    userId: ID!,
+    username: String!,
+    password: String!,
+    nickname: String!,
+    activated: boolean!
+}
+
+input TioInput {
+    userId:ID,
+    username: String!,
+    password: String!,
+    nickname: String!,
+    activated: boolean!
+}
+
+extend type Query {
+    user(id:ID!):User
+    users:[User]!
+}
+
+extend type Mutation {
+    saveUser(user:UserInput!):User!
+
+    deleteUser(id:ID!):Boolean!
+}
