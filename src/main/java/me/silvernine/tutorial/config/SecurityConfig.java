@@ -57,10 +57,12 @@ public class SecurityConfig {
             )
 
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                .antMatchers("/api/hello", "/api/authenticate", "/api/signup").permitAll()
+                .requestMatchers("/api/hello").permitAll()
+                .requestMatchers("/api/authenticate").permitAll()
+                .requestMatchers("/api/signup").permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()
-                .antMatchers("/v3/api-docs/", "/swagger-ui/**").permitAll()
-                .antMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/v3/api-docs/", "/swagger-ui/**").permitAll()
+                .requestMatchers("/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated()
             )
 
